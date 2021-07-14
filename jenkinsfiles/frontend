@@ -33,7 +33,7 @@ pipeline {
             steps {
                 dir('./frontend') {
                     sh '''
-                        aws s3 cp --recursive ./* $HOST
+                        aws s3 cp --recursive ./dist/* $HOST
                     '''
                 }
             }
