@@ -31,7 +31,11 @@ pipeline {
         stage('Deploy') {
             when { changeset "frontend/**" }
             steps {
-                aws s3 cp --recursive ./\* $HOST
+                dir('./frontend') {
+                    sh '''
+                        aws s3 cp --recursive ./* $HOST
+                    '''
+                }
             }
         }
     }
