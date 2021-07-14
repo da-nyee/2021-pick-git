@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-           INSTANCE_PEM_PATH = credentials('instances-pem-path')
-           HOST = credentials('HOST_FRONTEND')
-        }
+        INSTANCE_PEM_PATH = credentials('instances-pem-path')
+        HOST = credentials('HOST_FRONTEND')
+    }
 
     stages {
         stage('Build') {
@@ -31,7 +31,7 @@ pipeline {
         stage('Deploy') {
             when { changeset "frontend/**" }
             steps {
-                aws s3 cp --recursive ./* $HOST
+                aws s3 cp --recursive ./\* $HOST
             }
         }
     }
