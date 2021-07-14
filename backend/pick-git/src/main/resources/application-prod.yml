@@ -24,3 +24,6 @@ security:
       redirect: http://localhost:8080/afterlogin
       access-token: https://github.com/login/oauth/access_token
       profile: https://api.github.com/user
+storage:
+  pickgit:
+    s3proxy: test
