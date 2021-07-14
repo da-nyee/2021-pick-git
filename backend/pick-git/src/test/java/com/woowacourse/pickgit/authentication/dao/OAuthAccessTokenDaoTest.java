@@ -35,7 +35,7 @@ class OAuthAccessTokenDaoTest {
         oAuthAccessTokenDao.insert(token, oauthAccessToken);
 
         // then
-        assertThat(oAuthAccessTokenDao.findByKeyToken(token).get()).isEqualTo(oauthAccessToken);
+        assertThat(oAuthAccessTokenDao.findByKeyToken(token)).contains(oauthAccessToken);
     }
 
     @Test
@@ -46,6 +46,6 @@ class OAuthAccessTokenDaoTest {
         oAuthAccessTokenDao.insert(token, "duplicated");
 
         // then
-        assertThat(oAuthAccessTokenDao.findByKeyToken(token).get()).isEqualTo("duplicated");
+        assertThat(oAuthAccessTokenDao.findByKeyToken(token)).contains("duplicated");
     }
 }

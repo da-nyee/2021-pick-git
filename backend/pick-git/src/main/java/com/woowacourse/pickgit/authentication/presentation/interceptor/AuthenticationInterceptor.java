@@ -27,7 +27,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         }
         String authentication = AuthorizationExtractor.extract(request);
         if (!oAuthService.validateToken(authentication)) {
-            throw new IllegalArgumentException("검증되지 않는 토큰입니다.");
+            return false;
         }
         request.setAttribute("authentication", authentication);
         return true;

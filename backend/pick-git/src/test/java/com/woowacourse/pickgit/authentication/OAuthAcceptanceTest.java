@@ -29,7 +29,7 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 @ActiveProfiles("test")
-public class OAuthAcceptanceTest {
+class OAuthAcceptanceTest {
 
     @LocalServerPort
     int port;
@@ -59,9 +59,7 @@ public class OAuthAcceptanceTest {
             .extract().as(OAuthLoginUrlResponse.class);
 
         // then
-        assertThat(
-            response.getUrl().startsWith("https://github.com/login/oauth/authorize")
-        ).isTrue();
+        assertThat(response.getUrl()).startsWith("https://github.com/login/oauth/authorize");
     }
 
     @DisplayName("로그인 - Github 인증후 리다이렉션을 통해 요청이 오면 토큰을 생성하여 반환한다.")

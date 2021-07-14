@@ -1,13 +1,18 @@
 pipeline {
     agent any
 
+    environment {
+           INSTANCE_PEM_PATH = credentials('instances-pem-path')
+           HOST = credentials('HOST_FRONTEND')
+        }
+
     stages {
         stage('Build') {
             when { changeset "frontend/**" }
             steps {
                 echo 'build frontend...'
 
-                dir('./backend/pick-git') {
+                dir('./frontend') {
                     sh '''
                         yarn
                         yarn build
@@ -26,7 +31,7 @@ pipeline {
         stage('Deploy') {
             when { changeset "frontend/**" }
             steps {
-                echo 'deploying...'
+                aws s3 cp --recursive ./* $HOST
             }
         }
     }

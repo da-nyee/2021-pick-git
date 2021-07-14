@@ -130,7 +130,7 @@ public class UserServiceIntegrationTest {
             .unfollowUser(authUserServiceDto, targetName);
 
         //then
-        assertThat(followServiceDto.getFollowerCount()).isEqualTo(0);
+        assertThat(followServiceDto.getFollowerCount()).isZero();
         assertThat(followServiceDto.isFollowing()).isFalse();
     }
 

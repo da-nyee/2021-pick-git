@@ -25,7 +25,7 @@ import org.springframework.test.context.ActiveProfiles;
 @DisplayName("OAuthService 통합 테스트 (UserRepository 사용)")
 @SpringBootTest(webEnvironment = WebEnvironment.NONE)
 @ActiveProfiles("test")
-public class OAuthServiceTest {
+class OAuthServiceTest {
 
     @MockBean
     private OAuthClient oAuthClient;

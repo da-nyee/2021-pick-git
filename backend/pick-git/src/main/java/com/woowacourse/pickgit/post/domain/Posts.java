@@ -13,6 +13,7 @@ public class Posts {
     private List<Post> posts = new ArrayList<>();
 
     public Posts() {
+        posts = null;
     }
 
     public int getCounts() {

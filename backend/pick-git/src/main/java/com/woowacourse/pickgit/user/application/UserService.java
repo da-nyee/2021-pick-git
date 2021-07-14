@@ -28,7 +28,7 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public UserProfileServiceDto getUserProfile(String username) {
-        User user = findUserByName(username);
+        var user = findUserByName(username);
 
         return new UserProfileServiceDto(
             user.getName(), user.getImage(), user.getDescription(),
@@ -40,8 +40,8 @@ public class UserService {
 
     public FollowServiceDto followUser(AuthUserServiceDto authUserServiceDto,
         String targetUsername) {
-        User source = findUserByName(authUserServiceDto.getGithubName());
-        User target = findUserByName(targetUsername);
+        var source = findUserByName(authUserServiceDto.getGithubName());
+        var target = findUserByName(targetUsername);
 
         validateDifferentSourceTarget(source, target);
         source.follow(target);
@@ -67,7 +67,7 @@ public class UserService {
     }
 
     private void validateDifferentSourceTarget(User source, User target) {
-        if (source.getId() == target.getId()) {
+        if (source.getId().equals(target.getId())) {
             throw new SameSourceTargetUserException();
         }
     }

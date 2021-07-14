@@ -160,7 +160,7 @@ class UserServiceMockTest {
             .unfollowUser(authUserServiceDto, targetName);
 
         //then
-        assertThat(followServiceDto.getFollowerCount()).isEqualTo(0);
+        assertThat(followServiceDto.getFollowerCount()).isZero();
         assertThat(followServiceDto.isFollowing()).isFalse();
 
         verify(userRepository, times(4)).findByBasicProfile_Name(anyString());
